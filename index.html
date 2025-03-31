@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AI_Image_Genarator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -27,21 +27,49 @@
                 <!-- promtcontainer hai ye  -->
                 <div class="promt-container">
                     <textarea class="promt-input" placeholder="What you want me to make for you :->" required autofocus></textarea>
-                    <button class="promt-button">
+                    <button type="button" class="promt-button">
                         <i class="fa-solid fa-cat"></i>
                     </button>
                 </div>
                 <!-- these is promt action butoon -->
                 <div class="promt-action">
                     <div class="selsect-wraper">
-                        <select  class="custom-select">
+                        <select  class="custom-select" required>
                             <option value="" selected disabled >Select your model</option>
                             <option value="black-forest-labs/FLUX.1-dev" >FLUX.1-dev </option>
                             <option value="black-forest-labs/FLUX.1-schnell" >1-schnell</option>
-                            <option value="" >Select your model</option>
-                            <option value="" >Select your model</option>
+                            <option value="stabilityai/stable-dffusion-xl-base-1.0" >Stable Diffusion XL</option>
+                            <option value="runwayml/stable-dffusion-v1-5" >Stable Diffusion v1.5</option>
+                            <option value="promthero/openjourney" >Open journey</option>
                         </select>
                     </div>
+
+                    <div class="selsect-wraper">
+                        <select  class="custom-select" required>
+                            <option value="" selected disabled >Image Count</option>
+                            <option value="1" >1 Image </option>
+                            <option value="2" >2 Image</option>
+                            <option value="3" >3 Image</option>
+                            <option value="4" >4 Image</option>
+                           
+                        </select>
+                    </div>
+                    <div class="selsect-wraper">
+                        <select  class="custom-select" required>
+                            <option value="" selected disabled >ASPECT RATIO</option>
+                            <option value="1" >Square(1:1)</option>
+                            <option value="2" >LandScape(16:9)</option>
+                            <option value="3" >Portrait(9:16)</option>
+    
+                           
+                        </select>
+                    </div>
+                    <button type="submit" class="generate-buto">
+                        <i class="fa-solid fa-cat">
+
+                        </i>
+                        Genarate
+                    </button>
                 </div>
             </form>
         </div>

@@ -1,0 +1,75 @@
+/* Author AAyushSingh making from watching youtube */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+*{
+
+    font-family: "Inter",sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+:root{
+    --color-primary:#5c56e1;
+    --color-primary-dark:#221f8d;
+    --color-accent:#413da1;
+    --color-card:#fdfdfd;
+    --color-input:#e2dada;
+    --color-text:#000000;
+    --color-border:#1f7783;
+    --color-placeholder:#7d7fcc;
+    --color-gradient:linear-gradient(135deg,#0d0d7b,#000012);
+
+
+    
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 15px;
+    
+    background: linear-gradient(#6112b0,#0d0d7b,#000012);
+    color: var(--color-text);
+    
+
+}
+.container{
+    width: 900px;
+    background: var(--color-card);
+    padding: 33px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 23px;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0,0.50);
+}
+.container::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--color-gradient);
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header.logowraper{
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+.header.logowraper.logo{
+   height: 55px;
+   width: 56px;
+   display: flex;
+   border-radius: 15px;
+   align-items: center;
+   justify-items: center;
+   background: var(--color-gradient);
+
+}
+  
