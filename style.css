@@ -219,10 +219,13 @@ background: linear-gradient(#6112b0,#0d0d7b,#000012)
     background: var(--color-input);
     border: 1px solid var(--color-border); 
 }
-.gallery-grid .image-card:hover{
+.gallery-grid .image-card:not(.loading):hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgb(21, 10, 48);
     
+}
+.gallery-grid .image-card .loading{
+
 }
 
 .gallery-grid .result-image{
