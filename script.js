@@ -5,7 +5,7 @@ const modelselect=document.getElementById("modelselect");
 const countselect=document.getElementById("countselect");
 const ratioselect=document.getElementById("ratioselect");
 const gridgallery=document.querySelector(".gallery-grid");
-//const API_KEY="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"
+
 
 const examplepromt=[
 "A futuristic city floating in the clouds, with neon lights and flying cars, cyberpunk style.",
