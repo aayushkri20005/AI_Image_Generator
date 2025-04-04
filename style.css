@@ -204,3 +204,9 @@ background: linear-gradient(#6112b0,#0d0d7b,#000012)
     transform: translateY(-2px);
     box-shadow: 0 0 0 4px rgba(21, 10, 48, 0.1);
 }
+.main-containt .gallery-grid{
+    display: grid;
+    gap: 15px;
+    margin: 30px;
+    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+}
