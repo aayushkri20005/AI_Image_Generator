@@ -20,14 +20,15 @@ const examplepromt=[
 ];
 
 const createimagecard=(selsectedmodel,imagecount,aspectratio,promttext)=>{
+    gridgallery.innerHTML="";
 for(let i=0;i<imagecount;i++){
-gridgallery.innerHTML+=` <div class="image-card">
-                        <img src="test.png"class="result-image">
-                        <div class="image-overlay">
-                            <button class="imge-downlod-btn">
-                                <i class="fa-solid fa-download"></i>
-                            </button>
+gridgallery.innerHTML+=` <div class="image-card loading" id="image-card-${i}" style="aspect-ratio:${aspectratio}">
+                        <div class="status-container">
+                            <div class="sppiner"></div>
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <p class="status-text">Genarating...</p>
                         </div>
+                        <img src="test.png"class="result-image">
                     </div>`;
 }
 }

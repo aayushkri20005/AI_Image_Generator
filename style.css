@@ -205,33 +205,41 @@ background: linear-gradient(#6112b0,#0d0d7b,#000012)
     transform: translateY(-2px);
     box-shadow: 0 0 0 4px rgba(21, 10, 48, 0.1);
 }
+.main-containt .gallery-grid:has(.image-card){
+    margin: 30px;
+}
 .main-containt .gallery-grid{
     display: grid;
     gap: 15px;
-    margin: 30px;
+    
     grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
 }
 .gallery-grid .image-card{
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     aspect-ratio: 1;
     border-radius: 16px;
     background: var(--color-input);
     border: 1px solid var(--color-border); 
 }
-.gallery-grid .image-card:not(.loading):hover{
+.gallery-grid .image-card:not(.loading,.error):hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 15px -3px rgb(21, 10, 48);
     
 }
-.gallery-grid .image-card .loading{
 
-}
 
-.gallery-grid .result-image{
+.gallery-grid .image-card .result-image{
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.gallery-grid .image-card:is(.loading,.error) :is(.result-image,.image-overlay){
+display: none;
 }
 .gallery-grid .image-card .image-overlay{
 position: absolute;
@@ -268,4 +276,41 @@ pointer-events: auto;
     background-color: rgba(255, 255, 255, 0.749);
     color: #000000;
     box-shadow: 0 0 0 4px rgba(21, 10, 48, 0.1);
+}
+.gallery-grid .image-card .status-container{
+    padding: 15px;
+    display: none;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+}
+.gallery-grid .image-card:where(.loading, .error) .status-container{
+    display: flex;
+}
+.gallery-grid .image-card.loading .status-container i,.gallery-grid .image-card.error .sppiner  {
+    display: none;
+}
+
+.gallery-grid .image-card.error .status-container i {
+    font-size: 1.7rem;
+    color: #c50505;
+}
+.gallery-grid .image-card.loading .sppiner{
+    width: 35px;
+    height: 35px;
+    border-radius:50%;
+    border: 3px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.gallery-grid .image-card .status-text{
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--color-placeholder);
 }
