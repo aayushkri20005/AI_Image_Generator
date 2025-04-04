@@ -5,6 +5,7 @@ const modelselect=document.getElementById("modelselect");
 const countselect=document.getElementById("countselect");
 const ratioselect=document.getElementById("ratioselect");
 const gridgallery=document.querySelector(".gallery-grid");
+const API_KEY="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"
 
 const examplepromt=[
 "A futuristic city floating in the clouds, with neon lights and flying cars, cyberpunk style.",
@@ -18,7 +19,31 @@ const examplepromt=[
 "A cozy cottage in the middle of an enchanted autumn forest, with a warm fireplace inside.",
 "A massive dragon made of constellations flying across a twilight sky."
 ];
+const getimagedime=(aspectratio)=>{
+    
+}
+const generateimage=async(selsectedmodel,imagecount,aspectratio,promttext)=>{
+const modelurl=`https://api-inference.huggingface.co/models/${selsectedmodel}`;
+getimagedime(aspectratio);
+try{
+    const response= await fetch(modelurl,{
+        headers: {
+            Authorization: `Bearer ${API_KEY}`,
+            "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify({
+            inputs:promttext,
+            parameters:{width,height},
+            options:{wait_for_model:true,user_cache:false},
+        }),
+    });
+    const result = await response.blob();
+}catch(error){
+console.log(error)
+}
 
+}
 const createimagecard=(selsectedmodel,imagecount,aspectratio,promttext)=>{
     gridgallery.innerHTML="";
 for(let i=0;i<imagecount;i++){
@@ -31,6 +56,7 @@ gridgallery.innerHTML+=` <div class="image-card loading" id="image-card-${i}" st
                         <img src="test.png"class="result-image">
                     </div>`;
 }
+generateimage(selsectedmodel,imagecount,aspectratio,promttext);
 }
 const handleFromSubmit=(e)=>{
     e.preventDefault();
