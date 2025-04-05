@@ -19,30 +19,57 @@ const examplepromt=[
 "A cozy cottage in the middle of an enchanted autumn forest, with a warm fireplace inside.",
 "A massive dragon made of constellations flying across a twilight sky."
 ];
-const getimagedime=(aspectratio)=>{
-
+const API_KEY="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";
+const updateimagecards=(imageindex,imgurl)=>{
+    const imgcard=document.getElementById(`image-card-${imageindex}`);
+    if(! imgcard) return;
+    imgcard.classList.remove("loading");
+    imgcard.innerHTML=`<img src="${imgurl}"class="result-image">
+                        <div class="image-overlay">
+                            <a href="${imgurl}" class="imge-downlod-btn" download="${Date.now()}.png">
+                                <i class="fa-solid fa-download"></i>
+                            </a>
+                        </div>`;
 }
+const getimagedime=(aspectratio,basesize=512)=>{
+    const [width,height]=aspectratio.split("/").map(Number);
+    const scalerfactor=basesize/Math.sqrt(width*height);
+
+    let calculatedwidth=Math.round(width*scalerfactor);
+    let calulatedheight=Math.round(height*scalerfactor);
+
+    calculatedwidth=Math.floor(calculatedwidth/16)*16;
+    calulatedheight=Math.floor(height/16)*16;
+    return{width:calculatedwidth,height:calulatedheight};
+
+};
 const generateimage=async(selsectedmodel,imagecount,aspectratio,promttext)=>{
+const modelurl=`https://api-inference.huggingface.co/models/${selsectedmodel}`;
+const {width,height}=getimagedime(aspectratio);
+const imagepromises=Array.from({length:imagecount},async(_,i)=>{
+    try{
+        const response= await fetch(modelurl,{
+            headers: {
+                Authorization: `Bearer ${API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify({
+                inputs:promttext,
+                parameters:{width,height},
+                options:{wait_for_model:true,user_cache:false},
+            }),
+        });
 
-getimagedime(aspectratio);
-try{
-    const response= await fetch(modelurl,{
-        headers: {
-            Authorization: `Bearer ${API_KEY}`,
-            "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify({
-            inputs:promttext,
-            parameters:{width,height},
-            options:{wait_for_model:true,user_cache:false},
-        }),
-    });
-    const result = await response.blob();
-}catch(error){
-console.log(error)
-}
+        if(!response.ok) throw new Error((await response.json())?.error);
+        const result = await response.blob();
+        updateimagecards(i,URL.createObjectURL(result));
+    }catch(error){
+    console.log(error)
+    }
+});
 
+await Promise.allSettled(imagepromises);
 }
 const createimagecard=(selsectedmodel,imagecount,aspectratio,promttext)=>{
     gridgallery.innerHTML="";
@@ -53,7 +80,6 @@ gridgallery.innerHTML+=` <div class="image-card loading" id="image-card-${i}" st
                             <i class="fa-solid fa-triangle-exclamation"></i>
                             <p class="status-text">Genarating...</p>
                         </div>
-                        <img src="test.png"class="result-image">
                     </div>`;
 }
 generateimage(selsectedmodel,imagecount,aspectratio,promttext);
