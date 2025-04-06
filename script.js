@@ -44,7 +44,7 @@ const getimagedime=(aspectratio,basesize=512)=>{
 
 };
 const generateimage=async(selsectedmodel,imagecount,aspectratio,promttext)=>{
-const modelurl=`https://api-inference.huggingface.co/models/${selsectedmodel}`;
+const modelurl=${selsectedmodel}`;
 const {width,height}=getimagedime(aspectratio);
 const imagepromises=Array.from({length:imagecount},async(_,i)=>{
     try{
