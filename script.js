@@ -1,3 +1,4 @@
+
 const promtbtn=document.querySelector(".promt-button");
 const promtinput=document.querySelector(".promt-input");
 const promtform=document.querySelector(".promt-form");
@@ -19,7 +20,7 @@ const examplepromt=[
 "A cozy cottage in the middle of an enchanted autumn forest, with a warm fireplace inside.",
 "A massive dragon made of constellations flying across a twilight sky."
 ];
-const API_KEY="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";
+
 const updateimagecards=(imageindex,imgurl)=>{
     const imgcard=document.getElementById(`image-card-${imageindex}`);
     if(! imgcard) return;
@@ -101,4 +102,5 @@ promtbtn.addEventListener("click",()=>{
     promtinput.focus();
 });
 
-promtform.addEventListener("submit",handleFromSubmit)
+promtform.addEventListener("submit",handleFromSubmit);
+
