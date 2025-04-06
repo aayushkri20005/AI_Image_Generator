@@ -44,13 +44,13 @@ const getimagedime=(aspectratio,basesize=512)=>{
 
 };
 const generateimage=async(selsectedmodel,imagecount,aspectratio,promttext)=>{
-const modelurl=${selsectedmodel}`;
+const modelurl=`https://api-inference.huggingface.co/models/${selsectedmodel}`;
 const {width,height}=getimagedime(aspectratio);
 const imagepromises=Array.from({length:imagecount},async(_,i)=>{
     try{
         const response= await fetch(modelurl,{
             headers: {
-                Authorization: `Bearer ${API_KEY}`,
+                Authorization: `Bearer ${}`,
                 "Content-Type": "application/json",
             },
             method: "POST",
