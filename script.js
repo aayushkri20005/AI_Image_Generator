@@ -6,7 +6,8 @@ const countselect=document.getElementById("countselect");
 const ratioselect=document.getElementById("ratioselect");
 const gridgallery=document.querySelector(".gallery-grid");
 
-const API_KEY;
+const API_KEY="";
+// add your apikey here
 const examplepromt=[
 "A futuristic city floating in the clouds, with neon lights and flying cars, cyberpunk style.",
 "A mystical forest glowing with bioluminescent plants and fairies under a starry night sky.",
