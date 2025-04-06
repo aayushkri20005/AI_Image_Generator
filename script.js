@@ -50,7 +50,7 @@ const imagepromises=Array.from({length:imagecount},async(_,i)=>{
     try{
         const response= await fetch(modelurl,{
             headers: {
-                Authorization: `Bearer ${}`,
+                Authorization: `Bearer ${API_KEY}`,
                 "Content-Type": "application/json",
             },
             method: "POST",
