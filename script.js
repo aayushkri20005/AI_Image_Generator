@@ -1,4 +1,3 @@
-
 const promtbtn=document.querySelector(".promt-button");
 const promtinput=document.querySelector(".promt-input");
 const promtform=document.querySelector(".promt-form");
@@ -7,6 +6,7 @@ const countselect=document.getElementById("countselect");
 const ratioselect=document.getElementById("ratioselect");
 const gridgallery=document.querySelector(".gallery-grid");
 
+const API_KEY;
 const examplepromt=[
 "A futuristic city floating in the clouds, with neon lights and flying cars, cyberpunk style.",
 "A mystical forest glowing with bioluminescent plants and fairies under a starry night sky.",
